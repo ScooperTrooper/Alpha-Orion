@@ -5,8 +5,8 @@ using UnityEngine;
 public class movetest : MonoBehaviour
 {
 
-    float moveSpeed = 1.5f;
-    float turnSpeed = 1f;
+    float moveSpeed = 1f;
+    float turnSpeed = 0.5f;
     float runSpeed;
     float animationSpeed;
     float speed;
