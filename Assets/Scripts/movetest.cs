@@ -5,8 +5,8 @@ using UnityEngine;
 public class movetest : MonoBehaviour
 {
 
-    float moveSpeed = 7f;
-    float turnSpeed = 2f;
+    float moveSpeed = 1.5f;
+    float turnSpeed = 1f;
     float runSpeed;
     float animationSpeed;
     float speed;
@@ -17,7 +17,7 @@ public class movetest : MonoBehaviour
     void Start()
     {
         speed = moveSpeed;
-        animationSpeed = 0.1f;
+        animationSpeed = 0.4f;
         runSpeed = moveSpeed * 1.7f;
         animator = this.gameObject.GetComponent<Animator>();
     }
@@ -26,7 +26,7 @@ public class movetest : MonoBehaviour
     void Update()
     {
         animator.speed = 1;
-        speed = moveSpeed;
+
         if (animator != null)
         {
             this.animator.SetFloat("Forward", forward); this.animator.SetFloat("Turn", 0f);
@@ -88,13 +88,13 @@ public class movetest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = runSpeed;
-            animationSpeed = 0.2f;
+      
 
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = moveSpeed;
-            animationSpeed = 0.1f;
+
 
         }
 
