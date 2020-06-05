@@ -17,7 +17,7 @@ public class movetest : MonoBehaviour
     void Start()
     {
         speed = moveSpeed;
-        animationSpeed = 0.4f;
+        animationSpeed = 0.7f;
         runSpeed = moveSpeed * 1.7f;
         animator = this.gameObject.GetComponent<Animator>();
     }
@@ -25,65 +25,170 @@ public class movetest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.speed = 1;
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D)) { forward = 0; }
+        this.animator.SetFloat("Forward", forward);
 
-        if (animator != null)
-        {
-            this.animator.SetFloat("Forward", forward); this.animator.SetFloat("Turn", 0f);
-            
 
-        }
+
+
+    
+
+
+
+
+
+
 
         if (Input.GetKey(KeyCode.W))
         {
-            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward *(speed * Time.fixedDeltaTime));
+
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, 0, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
             if (animator != null)
             {
-                forward =  speed*animationSpeed;
+                forward = speed * animationSpeed;
 
             }
 
 
         }
-        else { forward = 0; }
-
-
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.A))
         {
-            this.animator.SetFloat("Turn", -0.2f);
-            this.gameObject.transform.RotateAround(this.gameObject.transform.position, Vector3.up, -turnSpeed);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            this.animator.SetFloat("Turn",-0.8f);
-            this.gameObject.transform.RotateAround(this.gameObject.transform.position, Vector3.up, -turnSpeed);
-        }
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, -90, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
+            if (animator != null)
+            {
+                forward = speed * animationSpeed;
 
-
+            }
+        }
         if (Input.GetKey(KeyCode.S))
         {
-            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (-speed * Time.fixedDeltaTime));
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, 180, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
             if (animator != null)
             {
-                animator.playbackTime = animator.GetCurrentAnimatorClipInfo(1).Length;
-                animator.speed = -1;
-              
-
-                forward = animationSpeed * speed;
+                forward = speed * animationSpeed;
 
             }
-        }
-        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W))
-        {
-            this.animator.SetFloat("Turn", 0.2f);
-            this.gameObject.transform.RotateAround(this.gameObject.transform.position, Vector3.up, turnSpeed);
 
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            this.animator.SetFloat("Turn", 0.8f);
-            this.gameObject.transform.RotateAround(this.gameObject.transform.position, Vector3.up, turnSpeed);
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, 90, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
+            if (animator != null)
+            {
+                forward = speed * animationSpeed;
+
+            }
+
         }
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, -45, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, -45, 0);
+            }
+
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
+            if (animator != null)
+            {
+                forward = speed * animationSpeed;
+
+            }
+
+
+        }
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, 45, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, 45, 0);
+            }
+
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
+            if (animator != null)
+            {
+                forward = speed * animationSpeed;
+
+            }
+
+
+        }
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, -135, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, -135, 0);
+            }
+
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
+            if (animator != null)
+            {
+                forward = speed * animationSpeed;
+
+            }
+
+
+        }
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            if (this.gameObject.transform.rotation != Quaternion.Euler(0, 135, 0))
+            {
+                this.gameObject.transform.rotation = Quaternion.Euler(0, 135, 0);
+            }
+
+            this.gameObject.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward * (speed * Time.fixedDeltaTime));
+            if (animator != null)
+            {
+                forward = speed * animationSpeed;
+
+            }
+
+
+        }
+
+
+
+
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            forward = 0;
+
+        }
+
+
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        {
+            forward = 0;
+
+        }
+
+
+
+
+
+
+
+
+
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
